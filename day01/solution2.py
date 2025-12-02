@@ -19,5 +19,15 @@ def answer():
     num = (-1 if move[0] == "L" else 1) * int(move[1:])
     oldPosition = currentPosition
     currentPosition = (currentPosition + num) % 100
-    count += (abs(num) // 100) + (1 if (((currentPosition >= oldPosition and num <= 0) or (currentPosition <= oldPosition and num >= 0)) and oldPosition != 0) or currentPosition == 0 else 0)
+
+    #edge cases
+    case1 = (currentPosition >= oldPosition and num <= 0)
+    case2 = (currentPosition <= oldPosition and num >= 0)
+    case3 = oldPosition != 0
+    case4 = currentPosition == 0
+
+    if ((case1 or case2 ) and case3) or case4:
+      count += (abs(num) // 100) + 1
+    else:
+      count += (abs(num) // 100) + 0
   return count
