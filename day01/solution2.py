@@ -16,11 +16,12 @@ def answer():
   currentPosition = 50
   count = 0
   for move in data:
+    # directly make the number -ve when the direaction is L else +ve
     num = (-1 if move[0] == "L" else 1) * int(move[1:])
     oldPosition = currentPosition
     currentPosition = (currentPosition + num) % 100
 
-    #edge cases
+    # cases
     case1 = (currentPosition >= oldPosition and num <= 0)
     case2 = (currentPosition <= oldPosition and num >= 0)
     case3 = oldPosition != 0
